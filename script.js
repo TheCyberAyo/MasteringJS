@@ -162,3 +162,15 @@ button.addEventListener("mouseout", function() {
 
 
 
+//  CREATING  AND REMOVING ELEMENTS DYNAMICALLY
+
+//what the hell does this mean?
+
+function renderAnimals (animals){
+    while(animalContainer.firstChild){
+        animalaContainer.removeChild(animalContainer.firstChild)
+    };
+    animals.forEach(renderOneAnimal)
+};
+
+
