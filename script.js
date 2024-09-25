@@ -151,9 +151,11 @@ button.addEventListener("click", function(event){
 });
 
 //Adding mouseover event listener to change background-color
-button.addEventListener("mouseover", function() {
+button.addEventListener("mouseover", function()  {
     button.style.backgroundColor="lightblue";
 });
+
+
 
 button.addEventListener("mouseout", function() {
     button.style.backgroundColor="";
@@ -173,4 +175,111 @@ function renderAnimals (animals){
     animals.forEach(renderOneAnimal)
 };
 
+
+// ARROW FUNCTION
+// Arrow functions provide a shorter and more concise syntax for writing functions. They use the => syntax and omit the need for the function keyword.
+// Arrow functions are particularly useful for writing simple one-line functions, such as in array methods like map, filter, or reduce.
+// Lexical this:
+//       - One of the key differences between traditional functions and arrow functions is how they handle the this keyword.
+//       - Arrow functions inherit this from the surrounding context, which eliminates common issues with this in callback functions, particularly 
+//         in object-oriented programming.
+
+// TEMPLATE LlITERALS
+// Enhanced String Interpolation:
+//       - provide a more flexible way to create strings, allowing for embedded expressions and multi-line strings without the need for concatenation.
+//       - They are defined using backticks (`) instead of single or double quotes.
+
+// Expressions Inside Strings:
+//       - You can embed expressions inside template literals using ${} syntax. This allows you to directly insert variables, expressions,
+//         or function results into strings, making the code more readable and easier to maintain.
+
+// OTHER NOTABLE ES6+ FEATURES:
+// Default Parameters:
+//         - ES6 allows you to set default values for function parameters, making your functions more robust and reducing the need for additional checks.
+// Destructuring:
+//         - enables you to unpack values from arrays or properties from objects into distinct variables, simplifying the extraction of data from
+//           complex structures.
+// Spread and Rest Operators:
+//         - The spread operator (...) allows you to expand elements of an array or object. It’s useful for copying arrays, combining objects,
+//           or passing multiple elements as arguments.
+//         - The rest operator, also using (...), collects multiple elements into an array, making it easier to handle function parameters or 
+//           gather the remaining elements in an array.
+
+
+// ASYCHRONOUS JAVASCRIPT (CALLBACKS, PROMISES, ASYNC/AWAIT)
+//1. Callbacks
+//    A callback is a function that is passed as an argument to another function and is executed after the completion of a specific task.
+//    This is one of the simplest ways to handle asynchronous operations in JavaScript.
+   
+function fetchData(callback){
+    setTimeout(() => {
+        const data = "Data fetched from server";
+        callback(data);
+    }, 2000);
+}
+
+function displayData(data) {
+    console.log(data);
+}
+
+fetchData(displayData);
+
+// ABOVE CODE 
+// Define a function called fetchData that takes a callback function as an argument
+function fetchData(callback) {
+    // Use setTimeout to simulate a delay (e.g., waiting for data to be fetched)
+    setTimeout(() => {
+        // After 2 seconds, create a variable 'data' with a message
+        const data = "Data fetched from server";
+        // Call the provided callback function and pass 'data' to it
+        callback(data);
+    }, 2000); // Wait for 2000 milliseconds (2 seconds)
+}
+
+// Define a function called displayData that takes 'data' as an argument
+function displayData(data) {
+    // Log the received data to the console
+    console.log(data);
+}
+
+// Call fetchData, passing in displayData as the callback function
+fetchData(displayData);
+
+
+//OWN Example
+function getData(callback) {
+    setTimeout(() => {
+        let fightingSkills = "A long list of fighting skills";
+        callback(fightingSkills)
+    }, 3000);
+}
+
+function displaySkills(fightingSkills) {
+    console.log(fightingSkills)
+}
+
+getData(displaySkills);
+
+//2. Promises
+// A promise is an object that represents the eventual completion (or failure) of an asynchronous operation. 
+// It allows you to attach callbacks to handle the result or error, providing a cleaner and more manageable 
+// way to work with asynchronous code.
+
+function beadsData () {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'cyan', 'magenta'];
+            resolve(colors)
+        }, 4000);
+    });
+
+}
+
+beadsData()
+    .then((colors) => {
+        console.log(colors);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
 
